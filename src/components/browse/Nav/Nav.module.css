@@ -23,7 +23,7 @@
     object-fit: contain;
 }
 
-.nav_avatar {
+.icon_wrap_nav {
     position: fixed;
     right: 20px;
     width: 30px;

@@ -1,10 +1,15 @@
-import React from 'react';
+import React from "react";
+import Nav from "../../components/browse/Nav";
+import ResultList from "../../components/search/ResultList";
+import SearchForm from "../../components/search/SearchForm";
 
 const Search = () => {
+
 	return (
-		<div className='app'>
-			<h1>Search</h1>
-			<h1>  git push -f origin master git push -f origin master git push -f origin master git push -f origin mastert</h1>
+		<div className="app">
+			<Nav />
+			<SearchForm />
+			<ResultList />
 		</div>
 	);
 };

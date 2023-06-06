@@ -25,7 +25,7 @@ function Nav() {
             <div className={styles.nav_title} onClick={() => navigate("/")}>
                 Movie App
             </div>
-            <div className={`${styles.icon_wrap_nav} ${styles.nav_avatar}`} onClick={() => navigate("/search")}>
+            <div className={styles.icon_wrap_nav} onClick={() => navigate("/search")}>
                 <svg
                     className='svg-inline--fa fa-search fa-w-16'
                     fill='#ccc'
