@@ -24,10 +24,6 @@ function Banner() {
 
     const backdropLink = `${base_url}${movie.backdrop_path}`;
 
-    function truncate(str, n) {
-        return str?.length > n ? str.substr(0, n - 1) + '...' : str;
-    }
-
     return (
         <header className={styles.banner}  >
             <img src={backdropLink} alt="" className={styles.bannerImg} />
@@ -40,9 +36,7 @@ function Banner() {
                     <button className={styles.banner_button}>Play</button>
                     <button className={styles.banner_button}>My List</button>
                 </div>
-                <h1 className={styles.banner_description}>
-                    {truncate(movie?.overview, 150)}
-                </h1>
+                <h3 className={styles.banner_description}> {movie.overview}</h3>
             </div>
         </header>
     );
