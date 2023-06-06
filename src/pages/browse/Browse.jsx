@@ -1,18 +1,18 @@
 import React from 'react';
 
+import requests from '../../api/requests';
+import MovieList from '../../components/browse/MovieLis';
 import Banner from '../../components/browse/Banner';
 import Nav from '../../components/browse/Nav';
 
 import styles from './Browse..module.css';
-import requests from '../../api/requests';
-import MovieList from '../../components/browse/MovieLis';
 
 function Browse() {
 	return (
 		<div className={styles.app}>
 			<Nav />
 			<Banner />
-			<MovieList title="" isLargeRow fetchUrl={requests.fetchNetflixOriginals} />
+			<MovieList title="" isOriginals fetchUrl={requests.fetchNetflixOriginals} />
 			<MovieList title="Xu hướng" fetchUrl={requests.fetchTrending} />
 			<MovieList title="Xếp hạng cao" fetchUrl={requests.fetchTopRated} />
 			<MovieList title="Hành động" fetchUrl={requests.fetchActionMovies} />

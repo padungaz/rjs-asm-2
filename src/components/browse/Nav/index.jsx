@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import './Nav.css';
+import styles from './Nav.module.css';
 
 function Nav() {
-    const [show, handleShow] = useState(false);
+    const [offset, setOffset] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                handleShow(true);
-            } else handleShow(false);
-        });
+        const scrollHandler = () => {
+            if (window?.scrollY > 100) {
+                setOffset(true);
+            } else {
+                setOffset(false);
+            }
+        };
+        window?.addEventListener('scroll', scrollHandler);
         return () => {
-            window.removeEventListener('scroll');
+            window?.removeEventListener('scroll', scrollHandler);
         };
     }, []);
 
     return (
-        <div className={`nav ${show && 'nav_black'}`}>
-            <div className='nav-title' onClick={() => navigate("/")} >
-                <p>Movie App</p>
+        <div className={`${styles.nav} ${offset && styles.nav_black}`}>
+            <div className={styles.nav_title} onClick={() => navigate("/")}>
+                Movie App
             </div>
-            <div className='icon-wrap-nav nav_avatar' onClick={() => navigate("/search")}>
+            <div className={`${styles.icon_wrap_nav} ${styles.nav_avatar}`} onClick={() => navigate("/search")}>
                 <svg
                     className='svg-inline--fa fa-search fa-w-16'
                     fill='#ccc'

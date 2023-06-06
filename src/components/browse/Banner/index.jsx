@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import requests from '../../../api/requests';
+import axios from '../../../api/axios';
 
 import styles from "./Banner.module.css";
-import requests from '../../../api/requests';
-import instance from '../../../api/axios';
 
 const base_url = 'https://image.tmdb.org/t/p/w500';
 
@@ -11,10 +11,10 @@ function Banner() {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await instance.get(requests.fetchNetflixOriginals);
+            const request = await axios?.get(requests?.fetchNetflixOriginals);
             setMovie(
-                request.data.results[
-                Math.floor(Math.random() * request.data.results.length - 1)
+                request?.data?.results[
+                Math?.floor(Math?.random() * request?.data?.results?.length - 1)
                 ]
             );
             return request;
@@ -22,7 +22,7 @@ function Banner() {
         fetchData();
     }, []);
 
-    const backdropLink = `${base_url}${movie.backdrop_path}`;
+    const backdropLink = `${base_url}${movie?.backdrop_path}`;
 
     return (
         <header className={styles.banner}  >
@@ -36,7 +36,7 @@ function Banner() {
                     <button className={styles.banner_button}>Play</button>
                     <button className={styles.banner_button}>My List</button>
                 </div>
-                <h3 className={styles.banner_description}> {movie.overview}</h3>
+                <h3 className={styles.banner_description}> {movie?.overview}</h3>
             </div>
         </header>
     );
