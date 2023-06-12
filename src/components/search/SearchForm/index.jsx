@@ -5,8 +5,8 @@ const SearchForm = (props) => {
 
     const inputRef = useRef();
     const searchHandle = () => {
-        const query = inputRef.current.value;
-        props.keyWork(query);
+        const query = inputRef?.current?.value;
+        props?.keyWork(query);
     };
 
     const resetHandle = () => {
@@ -14,8 +14,8 @@ const SearchForm = (props) => {
     };
 
     const keyDownHandle = (e) => {
-        if (e.key === "Enter") {
-            const query = inputRef.current.value;
+        if (e?.key === "Enter") {
+            const query = inputRef?.current?.value;
             props.keyWork(query);
         }
     };
