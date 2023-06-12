@@ -1,5 +1,6 @@
 .result_list {
     padding: 20px;
+    width: 100%;
 }
 
 h2,
@@ -25,4 +26,14 @@ p {
 
 .row_poster_img:hover {
     transform: scale(1.11);
+}
+
+.movies {
+    display: flex;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.movie_detail {
+    margin-right: 20px;
 }

@@ -1,12 +1,23 @@
 .movie_detail {
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
+    width: 100%;
 }
 
 .movie_detail_data {
     padding-right: 30px;
+    width: 50%;
+}
+
+.movie_detail_trailer {
+    width: 50rem;
 }
 
 .movie_detail_data hr {
     margin: 20px 0px;
+}
+
+h1,
+h2,
+h3 {
+    color: #fff;
 }

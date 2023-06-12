@@ -47,7 +47,7 @@ function MovieList({ title, fetchUrl, isOriginals }) {
                             key={movie.id}
                             onClick={() => handlePoster(movie)}
                             className={`${styles.row_poster_img} ${isOriginals && styles.row_posterLarge}`}
-                            src={`${base_url}${isOriginals ? movie.poster_path : movie.backdrop_path}`}
+                            src={`${base_url}${isOriginals ? movie?.poster_path : movie?.backdrop_path}`}
                             alt={movie.name}
                         />
                     );
