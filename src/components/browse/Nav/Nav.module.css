@@ -28,6 +28,7 @@
     right: 20px;
     width: 30px;
     object-fit: contain;
+    cursor: pointer;
 }
 
 .nav_title {
@@ -35,4 +36,5 @@
     color: red;
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
 }

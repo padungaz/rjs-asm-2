@@ -10,6 +10,7 @@ function Banner() {
     const [movie, setMovie] = useState([]);
 
     useEffect(() => {
+        // khi component được render lấy data của fetchNetflixOriginals và random 1 movie
         async function fetchData() {
             const request = await axios?.get(requests?.fetchNetflixOriginals);
             setMovie(
@@ -22,7 +23,7 @@ function Banner() {
         fetchData();
     }, []);
 
-    const backdropLink = `${base_url}${movie?.backdrop_path}`;
+    const backdropLink = `${base_url}${movie?.backdrop_path}`;/* URL của hình ảnh nền của phim */
 
     return (
         <header className={styles.banner}  >

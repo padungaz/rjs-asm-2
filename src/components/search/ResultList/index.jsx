@@ -16,12 +16,13 @@ const ResultList = ({ query }) => {
     console.log("selectedMovie", selectedMovie)
     console.log("trailerUrl", trailerUrl)
     useEffect(() => {
+        // fetchData khi url, query thay dổi
         async function fetchData() {
             const request = await axios?.get(url);
             setMovies(request?.data?.results);
             return request;
         }
-
+        // check query
         if (query) {
             fetchData();
         } else {
@@ -32,10 +33,12 @@ const ResultList = ({ query }) => {
 
     const handlePoster = (movie) => {
         if (selectedMovie === movie?.id) {
+            // Bỏ chọn phim và xóa URL của trailer nếu nó đã được chọn
             setSelectedMovie(null);
             setTrailerUrl('');
         } else {
             setSelectedMovie(movie.id);
+            // Lấy URL trailer của phim đã chọn
             movieTrailer(movie?.name || movie?.title || movie?.original_title || "")
                 .then((url) => {
                     const urlParams = new URLSearchParams(new URL(url)?.search);

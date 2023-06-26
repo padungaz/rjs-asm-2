@@ -14,7 +14,10 @@ function Nav() {
                 setOffset(false);
             }
         };
-        window?.addEventListener('scroll', scrollHandler);
+        // Lắng nghe sự kiện cuộn trang khi component được render
+        window.addEventListener('scroll', scrollHandler);
+
+        // Xóa lắng nghe sự kiện cuộn trang khi component bị hủy
         return () => {
             window?.removeEventListener('scroll', scrollHandler);
         };

@@ -13,6 +13,7 @@ function MovieList({ title, fetchUrl, isOriginals }) {
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
+        // fetchData được gọi mỗi khi fetchUrl thay đổi.
         async function fetchData() {
             const request = await axios?.get(fetchUrl);
             setMovies(request?.data?.results);
@@ -31,7 +32,9 @@ function MovieList({ title, fetchUrl, isOriginals }) {
             movieTrailer(movie?.name || movie?.title || movie?.original_title || "")
                 .then((url) => {
                     const urlParams = new URLSearchParams(new URL(url).search);
+                    // URLSearchParams được tạo từ chuỗi tìm kiếm để truy cập và quản lý các tham số trong URL.
                     setTrailerUrl(urlParams.get('v'));
+                    // urlParams.get('v') trả về giá trị của tham số 'v' trong URL. Đây thường là mã nhận dạng video YouTube.
                 })
                 .catch((error) => console.log(error));
         }
