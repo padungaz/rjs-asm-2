@@ -1,6 +1,6 @@
 import React from 'react';
 
-import requests from '../../api/requests';
+import { requests } from '../../api/requests';
 import MovieList from '../../components/browse/MovieLis';
 import Banner from '../../components/browse/Banner';
 import Nav from '../../components/browse/Nav';
@@ -9,7 +9,7 @@ import styles from './Browse..module.css';
 
 function Browse() {
 	return (
-		<div className={styles.app}>
+		<div className={styles.browse}>
 			<Nav />
 			<Banner />
 			<MovieList title="" isOriginals fetchUrl={requests.fetchNetflixOriginals} />

@@ -16,8 +16,13 @@
     margin: 20px 0px;
 }
 
-h1,
-h2,
-h3 {
+.backdrop_path_img {
+    width: 100%;
+    height: auto;
+}
+
+.movie_detail h1,
+.movie_detail h2,
+.movie_detail h3 {
     color: #fff;
 }

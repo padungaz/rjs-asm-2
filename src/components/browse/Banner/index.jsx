@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import requests from '../../../api/requests';
+import { base_url, requests } from '../../../api/requests';
 import axios from '../../../api/axios';
 
 import styles from "./Banner.module.css";
 
-const base_url = 'https://image.tmdb.org/t/p/w500';
 
 function Banner() {
     const [movie, setMovie] = useState([]);

@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import movieTrailer from 'movie-trailer';
 import axios from '../../../api/axios';
 import MovieDetail from '../MovieDetail';
+import { API_KEY, base_url } from '../../../api/requests';
 
 import styles from './MovieList.module.css';
 
-const base_url = 'https://image.tmdb.org/t/p/w500';
-
 function MovieList({ title, fetchUrl, isOriginals }) {
     const [movies, setMovies] = useState([]);
-    const [trailerUrl, setTrailerUrl] = useState('');
+    const [trailerKey, setTrailerKey] = useState('');
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
@@ -26,17 +24,22 @@ function MovieList({ title, fetchUrl, isOriginals }) {
     const handlePoster = (movie) => {
         if (selectedMovie && selectedMovie?.id === movie?.id) {
             setSelectedMovie(null);
-            setTrailerUrl('');
+            setTrailerKey('');
         } else {
             setSelectedMovie(movie);
-            movieTrailer(movie?.name || movie?.title || movie?.original_title || "")
-                .then((url) => {
-                    const urlParams = new URLSearchParams(new URL(url).search);
-                    // URLSearchParams được tạo từ chuỗi tìm kiếm để truy cập và quản lý các tham số trong URL.
-                    setTrailerUrl(urlParams.get('v'));
-                    // urlParams.get('v') trả về giá trị của tham số 'v' trong URL. Đây thường là mã nhận dạng video YouTube.
-                })
-                .catch((error) => console.log(error));
+
+            // tìm video trailer theo id 
+            async function fetchTrailerData() {
+                try {
+                    const request = await axios?.get(`/movie/${movie?.id}/videos?api_key=${API_KEY}`);
+                    setTrailerKey(request?.data?.results[0]?.key);
+                    return request;
+                } catch (error) {
+                    setTrailerKey(null);
+                    console.log(error);
+                }
+            }
+            fetchTrailerData();
         }
     };
 
@@ -57,7 +60,7 @@ function MovieList({ title, fetchUrl, isOriginals }) {
                 })}
             </div>
             <div style={{ padding: '40px' }}>
-                {selectedMovie && <MovieDetail movieData={selectedMovie} movieTrailer={trailerUrl} />}
+                {selectedMovie && <MovieDetail movieData={selectedMovie} movieTrailer={trailerKey} base_url={base_url} />}
             </div>
         </div>
     );
